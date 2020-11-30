@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'org.durga'
+version '0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
+    //compile group: 'org.apache.poi', name: 'poi', version: '4.1.2'
+
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.15'
+
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.1'
+
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+jar {
+    manifest {
+        attributes "Main-Class": "org.durga.PPTXToImage"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
