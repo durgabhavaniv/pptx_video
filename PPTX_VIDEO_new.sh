@@ -18,7 +18,7 @@ Help()
 
 }
 
-java -jar ./PPTXToImage/build/libs/pptxtoimage-0.1.jar $Input_path $Output_path
+java -jar /home/local/ZOHOCORP/durga-7043/ppt_to_video/pptx_video/PPTXToImage/build/libs/pptxtoimage-0.1.jar $Input_path $Output_path
 
 # Using CPU
 ffmpeg -framerate 100 -i $Output_path/base.png -framerate 0.25 -i $Output_path/$filename/ppt_image_%03d.png -c:v libx264 -filter_complex "overlay=x='(W-w)/2':y='(H-h)/2'" -pix_fmt yuv420p -y $Output_path/$filename/output.mp4
