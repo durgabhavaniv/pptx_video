@@ -56,7 +56,7 @@ public class PPTXToImage {
 
                     String imageOut = outputFilePath+ "/"+file.toString().replaceFirst("[.][^.]+$", "");
                     //render
-                    // System.out.println(outputFilePath);
+                    System.out.println(outputFilePath);
                     slide.get(i).draw(graphics);
                     File directory = new File(imageOut);
                     if (! directory.exists()){
