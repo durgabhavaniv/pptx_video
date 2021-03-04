@@ -10,8 +10,12 @@ import lombok.Setter;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "file")
-public class FileStorageProperties {
+public class ApplicationProperties {
+
     private String uploadDir;
     private String outDir;
-    private String scriptfile;
+    private String pptxVideoScriptfile;
+    private String pptxVideoInDir;
+    private String pptxVideoOutDir;
+
 }

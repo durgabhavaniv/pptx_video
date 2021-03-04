@@ -2,7 +2,7 @@ package org.zoho.zlabs.webCLI.service;
 
 import org.zoho.zlabs.webCLI.exception.FileStorageException;
 import org.zoho.zlabs.webCLI.exception.MyFileNotFoundException;
-import org.zoho.zlabs.webCLI.config.FileStorageProperties;
+import org.zoho.zlabs.webCLI.config.ApplicationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -25,7 +25,7 @@ public class FileStorageService {
     
 
     @Autowired
-    private FileStorageProperties fileStorageProperties;
+    private ApplicationProperties applicationProperties;
     @Autowired
     private CommandExecuter commandExecuter;
 
@@ -47,13 +47,9 @@ public class FileStorageService {
     
     // }
 
-    public String storeFile(MultipartFile file) {
-        this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
+    public String storeFile(Path inPath,MultipartFile file) {
+        this.fileStorageLocation = Paths.get(applicationProperties.getUploadDir())
                 .toAbsolutePath().normalize();
-        this.fileOutputLocation = Paths.get(fileStorageProperties.getOutDir())
-                .toAbsolutePath().normalize();
-        this.scriptfile = fileStorageProperties.getScriptfile();
-              
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -64,20 +60,21 @@ public class FileStorageService {
             }
 
             // Copy file to the target location (Replacing existing file with the same name)
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Path targetLocation = inPath!= null ? inPath : this.fileStorageLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            commandExecuter.processCommand(scriptfile+" "+fileStorageLocation.toString()+"/"+fileName+" "+fileOutputLocation.toString()+"/"+" "+fileName.replaceFirst("[.][^.]+$", ""));
+//            commandExecuter.processCommand(scriptfile+" "+fileStorageLocation.toString()+"/"+fileName+" "+fileOutputLocation.toString()+"/"+" "+fileName.replaceFirst("[.][^.]+$", ""));
 
-            return fileName.replaceFirst("[.][^.]+$", "");
-            // return "output.mp4";
+            return fileName; //.replaceFirst("[.][^.]+$", "");
 
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
 
-    public Resource loadFileAsResource(String fileName) {
+    public Resource loadFileAsResource(Path outPath,String fileName) {
+        this.fileOutputLocation = Paths.get(applicationProperties.getOutDir())
+                .toAbsolutePath().normalize();
         // this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
                 // .toAbsolutePath().normalize();
         // this.fileOutputLocation = Paths.get(fileStorageProperties.getOutDir())
@@ -86,11 +83,8 @@ public class FileStorageService {
         // this.commandExecuter = commandExecuter;
 
         try {
-            System.out.println (fileStorageProperties.getOutDir()+fileName.replaceFirst("[.][^.]+$", "/"));
-            Path oPath = Paths.get(fileStorageProperties.getOutDir()+fileName.replaceFirst("[.][^.]+$", "/"))
-            .toAbsolutePath().normalize();
-            Path filePath = oPath.resolve("output.mp4").normalize();
-            Resource resource = new UrlResource(filePath.toUri());
+            outPath = outPath != null? outPath : fileOutputLocation.resolve(fileName).normalize();
+            Resource resource = new UrlResource(outPath.toUri());
             if(resource.exists()) {
                 return resource;
             } else {
