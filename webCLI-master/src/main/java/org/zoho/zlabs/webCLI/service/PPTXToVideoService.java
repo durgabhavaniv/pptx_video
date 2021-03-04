@@ -28,10 +28,12 @@ public class PPTXToVideoService {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Path inPath = Paths.get(applicationProperties.getPptxVideoInDir())
                 .toAbsolutePath().normalize();
+        inPath = inPath.resolve(fileName);
+        log.info(inPath.toString());
         fileStorageService.storeFile(inPath,file);
         commandExecuter.processCommand(applicationProperties.getPptxVideoScriptfile()+" "+
-                applicationProperties.getPptxVideoInDir()+"/"+fileName+" "+
-                applicationProperties.getPptxVideoOutDir()+"/"+" "+
+                applicationProperties.getPptxVideoInDir()+fileName+" "+
+                applicationProperties.getPptxVideoOutDir()+" "+
                 fileName.replaceFirst("[.][^.]+$", ""));
 
         return fileName;
@@ -41,6 +43,8 @@ public class PPTXToVideoService {
 //        System.out.println (applicationProperties.getPptxVideoOutDir()+fileName.replaceFirst("[.][^.]+$", "/"));
         Path outPath = Paths.get(applicationProperties.getPptxVideoOutDir()+fileName.replaceFirst("[.][^.]+$", "/"))
                 .toAbsolutePath().normalize();
+        outPath = outPath.resolve("output.mp4");
+        // log.info(inPath.toString());
        return fileStorageService.loadFileAsResource(outPath, "output.mp4");
     }
 

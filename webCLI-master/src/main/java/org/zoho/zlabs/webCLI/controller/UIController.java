@@ -67,6 +67,8 @@ public class UIController {
                 break;
                 case "pptximage" : request.getRequestDispatcher("/WEB-INF/jsp/pptx_video_card.jsp").forward(request, response);
                 break;
+                case "ffmpegfilter" : request.getRequestDispatcher("/WEB-INF/jsp/ffmpeg_video_card.jsp").forward(request, response);
+                break;
                 default : request.getRequestDispatcher("/WEB-INF/jsp/terminal_card.jsp").forward(request, response);
             }
         }

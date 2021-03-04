@@ -78,16 +78,16 @@
               </div>
             </div>
         </div>
-<!--         <div class="col-sm">
+        <div class="col-sm">
           <div class="card" style="width: 18rem;">
               <img src="/resources/images/card_3.png" class="card-img-top" alt="..." width="250" height="200">
               <div class="card-body">
-                <h5 class="card-title">RUN INFERENCE ON FPGA</h5>
-                <p class="card-text">Quantize and compile your model then run inference on FPGA.</p>
-                <a href="<%= request.getContextPath()%>/cards?page=terminal" class="btn btn-primary">Try out</a>
+                <h5 class="card-title">RUN FFmpeg Filter</h5>
+                <p class="card-text">Run your filter happily.</p>
+                <a href="<%= request.getContextPath()%>/cards?page=ffmpegfilter" class="btn btn-primary">Try out</a>
               </div>
             </div>
-        </div> -->
+        </div>
       </div>
     </div>
 

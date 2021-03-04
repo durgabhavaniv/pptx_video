@@ -14,8 +14,13 @@ public class ApplicationProperties {
 
     private String uploadDir;
     private String outDir;
+    
     private String pptxVideoScriptfile;
     private String pptxVideoInDir;
     private String pptxVideoOutDir;
+
+    private String ffmpegVideoScriptfile;
+    private String ffmpegVideoInDir;
+    private String ffmpegVideoOutDir;
 
 }

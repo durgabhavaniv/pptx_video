@@ -13,6 +13,7 @@ import org.zoho.zlabs.webCLI.config.ApplicationProperties;
 import org.zoho.zlabs.webCLI.model.UploadFileResponse;
 import org.zoho.zlabs.webCLI.service.CommandExecuter;
 import org.zoho.zlabs.webCLI.service.PPTXToVideoService;
+import org.zoho.zlabs.webCLI.service.FfmpegFilterService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class AppController {
     private CommandExecuter commandExecuter;
     @Autowired
     private PPTXToVideoService pptxToVideoService;
+    @Autowired
+    private FfmpegFilterService ffmpegFilterService;
     @Autowired
     private ApplicationProperties applicationProperties;
 
@@ -54,6 +57,42 @@ public class AppController {
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         // Load file as Resource
         Resource resource = pptxToVideoService.getVideoFromPPTX(fileName);
+
+        // Try to determine file's content type
+        String contentType = null;
+        try {
+            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        } catch (IOException ex) {
+            log.info("Could not determine file type.");
+        }
+
+        // Fallback to the default content type if type could not be determined
+        if(contentType == null) {
+            contentType = "application/octet-stream";
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
+    }
+
+    @PostMapping("/card/ffmpegVideoUploadFile")
+    public UploadFileResponse uploadFile1(@RequestParam("file") MultipartFile file) {
+        String fileName = ffmpegFilterService.loadVideoFromPPTX(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/card/ffmpegVideoDownloadFile/")
+                .path(fileName)
+                .toUriString();
+
+        return new UploadFileResponse(fileName, fileDownloadUri,
+                file.getContentType(), file.getSize());
+    }
+
+    @GetMapping("/card/ffmpegVideoDownloadFile/{fileName:.+}")
+    public ResponseEntity<Resource> downloadFile1(@PathVariable String fileName, HttpServletRequest request) {
+        // Load file as Resource
+        Resource resource = ffmpegFilterService.getVideoFromPPTX(fileName);
 
         // Try to determine file's content type
         String contentType = null;
