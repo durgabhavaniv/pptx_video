@@ -26,7 +26,7 @@ public class FfmpegFilterService {
     public String loadVideoFromPPTX(MultipartFile file){
 
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        Path inPath = Paths.get(applicationProperties.getPptxVideoInDir())
+        Path inPath = Paths.get(applicationProperties.getFfmpegVideoInDir())
                 .toAbsolutePath().normalize();
         inPath = inPath.resolve(fileName);
         log.info(inPath.toString());

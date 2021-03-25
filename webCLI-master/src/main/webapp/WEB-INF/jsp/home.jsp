@@ -58,16 +58,16 @@
     <br/>
     <div class="container">
       <div class="row">
-<!--         <div class="col-sm">
+        <div class="col-sm">
           <div class="card" style="width: 18rem;">
               <img src="/resources/images/card_1.png" class="card-img-top" alt="..." width="250" height="200">
               <div class="card-body">
-                <h5 class="card-title">RUN INFERENCE ON FPGA</h5>
-                <p class="card-text">Quantize and compile your model then run inference on FPGA.</p>
-                <a href="<%= request.getContextPath()%>/cards?page=terminal" class="btn btn-primary">Try out</a>
+                <h5 class="card-title">Reverse your video</h5>
+                <p class="card-text">Reverse your video along with video conversion.</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter1" class="btn btn-primary">Try out</a>
               </div>
             </div>
-        </div> -->
+        </div>
         <div class="col-sm">
           <div class="card" style="width: 18rem;">
               <img src="/resources/images/card_2.png" class="card-img-top" alt="... " width="250" height="200">
@@ -82,12 +82,116 @@
           <div class="card" style="width: 18rem;">
               <img src="/resources/images/card_3.png" class="card-img-top" alt="..." width="250" height="200">
               <div class="card-body">
-                <h5 class="card-title">SOBEL Filter</h5>
-                <p class="card-text">Applies the sobel operator to Input.</p>
+                <h5 class="card-title">Video Conversion</h5>
+                <p class="card-text">Reduce Video size Using FFmpeg video conversion with less quality drop.</p>
                 <a href="<%= request.getContextPath()%>/cards?page=ffmpegfilter" class="btn btn-primary">Try out</a>
               </div>
             </div>
         </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_1.png" class="card-img-top" alt="..." width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter2</h5>
+                <p class="card-text">filter2</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter2" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_2.png" class="card-img-top" alt="... " width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter3</h5>
+                <p class="card-text">filter3</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter3" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_3.png" class="card-img-top" alt="..." width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter4</h5>
+                <p class="card-text">filter4</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter4" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_1.png" class="card-img-top" alt="..." width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter5</h5>
+                <p class="card-text">filter5</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter5" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_2.png" class="card-img-top" alt="... " width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter6</h5>
+                <p class="card-text">filter6</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter6" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_3.png" class="card-img-top" alt="..." width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter7</h5>
+                <p class="card-text">filter7</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter7" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_1.png" class="card-img-top" alt="..." width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">filter8</h5>
+                <p class="card-text">filter8</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter8" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div>
+<!--         <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_2.png" class="card-img-top" alt="... " width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">Convert PPTX to VIDEO</h5>
+                <p class="card-text">Enable your presentation to everyone on all platforms</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter3" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div> -->
+<!--         <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img src="/resources/images/card_3.png" class="card-img-top" alt="..." width="250" height="200">
+              <div class="card-body">
+                <h5 class="card-title">Video Conversion</h5>
+                <p class="card-text">Reduce Video size Using FFmpeg video conversion with less quality drop.</p>
+                <a href="<%= request.getContextPath()%>/cards?page=filter4" class="btn btn-primary">Try out</a>
+              </div>
+            </div>
+        </div> -->
       </div>
     </div>
 

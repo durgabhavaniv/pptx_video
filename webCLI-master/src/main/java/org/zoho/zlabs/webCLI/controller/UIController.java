@@ -69,6 +69,22 @@ public class UIController {
                 break;
                 case "ffmpegfilter" : request.getRequestDispatcher("/WEB-INF/jsp/ffmpeg_video_card.jsp").forward(request, response);
                 break;
+                case "filter1" : request.getRequestDispatcher("/WEB-INF/jsp/filter1_video_card.jsp").forward(request, response);
+                break;
+                case "filter2" : request.getRequestDispatcher("/WEB-INF/jsp/filter2_video_card.jsp").forward(request, response);
+                break;
+                case "filter3" : request.getRequestDispatcher("/WEB-INF/jsp/filter3_video_card.jsp").forward(request, response);
+                break;
+                case "filter4" : request.getRequestDispatcher("/WEB-INF/jsp/filter4_video_card.jsp").forward(request, response);
+                break;
+                case "filter5" : request.getRequestDispatcher("/WEB-INF/jsp/filter5_video_card.jsp").forward(request, response);
+                break;
+                case "filter6" : request.getRequestDispatcher("/WEB-INF/jsp/filter6_video_card.jsp").forward(request, response);
+                break;
+                case "filter7" : request.getRequestDispatcher("/WEB-INF/jsp/filter7_video_card.jsp").forward(request, response);
+                break;
+                case "filter8" : request.getRequestDispatcher("/WEB-INF/jsp/filter8_video_card.jsp").forward(request, response);
+                break;
                 default : request.getRequestDispatcher("/WEB-INF/jsp/terminal_card.jsp").forward(request, response);
             }
         }
